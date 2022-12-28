@@ -26,11 +26,6 @@
             font-weight: 400;
         }
 
-        /*table, tr, td, th {*/
-        /*    border: 1px solid black;*/
-        /*    border-collapse: collapse;*/
-        /*    padding: 10px;*/
-        /*}*/
         tr th {
             border: none;
             font-weight: 400;
@@ -43,7 +38,6 @@
         nav {
             margin-bottom: 25px;
         }
-
 
         .navbar-brand {
             margin: 0 262px 0 105px;
@@ -83,6 +77,11 @@
             box-shadow: 0px 0px 14px rgba(191, 191, 191, 0.25);
             display: flex;
             flex-direction: column;
+        }
+
+        .formm {
+            padding: 30px;
+            box-shadow: 0px 0px 14px rgba(191, 191, 191, 0.25);
         }
 
         .page-login-form h3 {
@@ -206,6 +205,25 @@
         textarea {
             width: 100%;
         }
+
+        .details-table td {
+            overflow-wrap: anywhere;
+        }
+
+        .details-table tr td:first-child {
+            width: 31%;
+            text-align: right !important;
+        }
+
+        .details-table tr td input {
+            width: 297px;
+        }
+
+        #categories-table td {
+            padding: 5px !important;
+        }
+
+
     </style>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
@@ -251,7 +269,7 @@
         @endguest
 
         <li class="nav-item d-none d-sm-inline-block">
-            <a href="{{route('posts.create')}}" class="nav-link" id="post-job">POST A JOB</a>
+            <a href="{{route('jobs.create')}}" class="nav-link" id="post-job">POST A JOB</a>
         </li>
     </ul>
 </nav>

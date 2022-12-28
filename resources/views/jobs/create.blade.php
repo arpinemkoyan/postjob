@@ -4,7 +4,7 @@
         <div class="row g-15" style="width: 72%">
             <div class="page-login-form box" id="login-form">
                 <h3 class="text-left">Post a new Job</h3>
-                <form class="post-form" method="post" action="{{ route('posts.store') }}">
+                <form class="post-form" method="post" action="{{ route('jobs.store') }}">
                     @csrf
                     <div class="form-group mb-3 col-12">
                         <div class="form-group">
@@ -13,14 +13,6 @@
                                    placeholder="Write job title">
                             @if ($errors->has('title'))--}}
                             <span class="text-danger">{{ $errors->first('title') }}</span>
-                            @endif
-                        </div>
-                        <div class="form-group">
-                            <label for="company">Company</label>
-                            <input type="text" id="company" class="form-control" name='company'
-                                   placeholder="Write company name">
-                            @if ($errors->has('company'))--}}
-                            <span class="text-danger">{{ $errors->first('company') }}</span>
                             @endif
                         </div>
                         <div class="form-group">
@@ -49,13 +41,13 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="job-tag">Job Title</label>
-                            <input type="text" class="form-control" name='job-tag' id="job-tag"
+                            <label for="job_tag">Job Title</label>
+                            <input type="text" class="form-control" name='job_tag' id="job_tag"
                                    placeholder="e.g.PHP,Social Media,Management">
                             <p class="text-left">Comma separate tags, such as required skills or technologies, for this
                                 job.</p>
-                            @if ($errors->has('job-tag'))--}}
-                            <span class="text-danger">{{ $errors->first('job-tag ') }}</span>
+                            @if ($errors->has('job_tag'))--}}
+                            <span class="text-danger">{{ $errors->first('job_tag ') }}</span>
                             @endif
                         </div>
                         <div class="form-group">
@@ -78,7 +70,7 @@
                                                 <button type="button"
                                                         class="note-btn btn btn-default btn-sm dropdown-toggle"
                                                         tabindex="-1" data-toggle="dropdown" title=""
-                                                        data-original-title="Style">                                                                                                                                <i class="note-icon-magic"></i>
+                                                        data-original-title="Style"><i class="note-icon-magic"></i>
                                                     <span class="note-icon-caret"></span></button>
                                                 <div class="dropdown-menu dropdown-style">
                                                     <li><a href="#" data-value="p"><p>Normal</p></a></li>
@@ -1157,10 +1149,10 @@
                         </section>
                         <div class="form-group">
                             <label for="url">Application email / URL</label>
-                            <input type="text" class="form-control" name='email-url' id="url"
+                            <input type="text" class="form-control" name='email_url' id="url"
                                    placeholder="Enter an email address or website URL">
-                            @if ($errors->has('email-url'))--}}
-                            <span class="text-danger">{{ $errors->first('email-url') }}</span>
+                            @if ($errors->has('email_url'))--}}
+                            <span class="text-danger">{{ $errors->first('email_url') }}</span>
                             @endif
                         </div>
                         <div class="form-group">
@@ -1171,52 +1163,52 @@
                             <span class="text-danger">{{ $errors->first('deadline') }}</span>
                             @endif
                         </div>
-                        <h3 class="text-left">Company details</h3>
-                        <div class="form-group">
-                            <label for="company-name">Company name</label>
-                            <input type="text" class="form-control" name='company_name' id="company-name"
-                                   placeholder="Enter the name of company">
-                            @if ($errors->has('company_name'))--}}
-                            <span class="text-danger">{{ $errors->first('company_ame') }}</span>
-                            @endif
+                        {{--                        <h3 class="text-left">Company details</h3>--}}
+                        {{--                        <div class="form-group">--}}
+                        {{--                            <label for="company-name">Company name</label>--}}
+                        {{--                            <input type="text" class="form-control" name='company_name' id="company-name"--}}
+                        {{--                                   placeholder="Enter the name of company">--}}
+                        {{--                            @if ($errors->has('company_name'))--}}
+                        {{--                            <span class="text-danger">{{ $errors->first('company_ame') }}</span>--}}
+                        {{--                            @endif--}}
+                        {{--                        </div>--}}
+                        {{--                        <div class="form-group">--}}
+                        {{--                            <label for="website">Website(optional)</label>--}}
+                        {{--                            <input type="url" class="form-control" name='website' id="website"--}}
+                        {{--                                   placeholder="http://">--}}
+                        {{--                            @if ($errors->has('website'))--}}
+                        {{--                            <span class="text-danger">{{ $errors->first('website') }}</span>--}}
+                        {{--                            @endif--}}
+                        {{--                        </div>--}}
+                        {{--                        <div class="form-group">--}}
+                        {{--                            <label for="tags">Tagline(optional)</label>--}}
+                        {{--                            <input type="text" class="form-control" name='tagline' id="tags"--}}
+                        {{--                                   placeholder="Briefly describe your company">--}}
+                        {{--                            @if ($errors->has('tagline'))--}}
+                        {{--                            <span class="text-danger">{{ $errors->first('tagline') }}</span>--}}
+                        {{--                            @endif--}}
+                        {{--                        </div>--}}
+                        {{--                        <div class="form-group">--}}
+                        {{--                            <label for="tags2">Tagline(optional)</label>--}}
+                        {{--                            <input type="text" class="form-control" name='tagline2' id="tags2"--}}
+                        {{--                                   placeholder="Briefly describe your company">--}}
+                        {{--                            @if ($errors->has('tagline2'))--}}
+                        {{--                            <span class="text-danger">{{ $errors->first('tagline2') }}</span>--}}
+                        {{--                            @endif--}}
+                        {{--                        </div>--}}
+                        {{--                        <div class="form-group">--}}
+                        {{--                            <label class="input-group-text" for="inputGroupFile02">--}}
+                        {{--                                Choose file...--}}
+                        {{--                                <input type="file" class="form-control" id="inputGroupFile02" name="file">--}}
+                        {{--                            </label>--}}
+                        {{--                            @if ($errors->has('file'))--}}
+                        {{--                            <span class="text-danger">{{ $errors->first('file') }}</span>--}}
+                        {{--                            @endif--}}
+                        {{--                        </div>--}}
+                        {{--                    </div>--}}
+                        <div class="col-12">
+                            <button type="submit" class="btn btn-dark btn-block" id="job-btn">Submit Your Job</button>
                         </div>
-                        <div class="form-group">
-                            <label for="website">Website(optional)</label>
-                            <input type="url" class="form-control" name='website' id="website"
-                                   placeholder="http://">
-                            @if ($errors->has('website'))--}}
-                            <span class="text-danger">{{ $errors->first('website') }}</span>
-                            @endif
-                        </div>
-                        <div class="form-group">
-                            <label for="tags">Tagline(optional)</label>
-                            <input type="text" class="form-control" name='tagline' id="tags"
-                                   placeholder="Briefly describe your company">
-                            @if ($errors->has('tagline'))--}}
-                            <span class="text-danger">{{ $errors->first('tagline') }}</span>
-                            @endif
-                        </div>
-                        <div class="form-group">
-                            <label for="tags2">Tagline(optional)</label>
-                            <input type="text" class="form-control" name='tagline2' id="tags2"
-                                   placeholder="Briefly describe your company">
-                            @if ($errors->has('tagline2'))--}}
-                            <span class="text-danger">{{ $errors->first('tagline2') }}</span>
-                            @endif
-                        </div>
-                        <div class="form-group">
-                            <label class="input-group-text" for="inputGroupFile02">
-                                Choose file...
-                                <input type="file" class="form-control" id="inputGroupFile02" name="file">
-                            </label>
-                            @if ($errors->has('file'))--}}
-                            <span class="text-danger">{{ $errors->first('file') }}</span>
-                            @endif
-                        </div>
-                    </div>
-                    <div class="col-12">
-                        <button type="submit" class="btn btn-dark btn-block" id="job-btn">Submit Your Job</button>
-                    </div>
                 </form>
             </div>
         </div>

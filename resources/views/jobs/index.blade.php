@@ -1,9 +1,9 @@
-@extends('posts.layout')
+@extends('jobs.layout')
 @section('content1')
     <div class="main-card p-4">
         <p class="text-left fs-2 fw-bold">Manage Jobs</p>
         <table class="table">
-        <thead class="table-borderless">
+            <thead class="table-borderless">
             <tr>
                 <th scope="col">Name</th>
                 <th scope="col">Keywords</th>

@@ -13,12 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('companies', function (Blueprint $table) {
+        Schema::create('job_tags', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
-            $table->string('website');
-            $table->string('tagline');
-            $table->binary('file');
+            $table->integer('job_id')->unsigned();
+            $table->integer('tag_id')->unsigned();
+
+            $table->foreign('job_id')->references('id')->on('jobs')
+                ->onDelete('cascade');
+            $table->foreign('tag_id')->references('id')->on('tags')
+                ->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -30,6 +33,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('companies');
+        Schema::dropIfExists('job_tags');
     }
 };

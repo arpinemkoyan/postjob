@@ -28,12 +28,12 @@
                             <span class="text-danger">{{ $errors->first('password') }}</span>
                         @endif
                     </div>
-{{--                    <div class="col-12 form-group mb-3">--}}
-{{--                        <input type="password" class="form-control" name='password' placeholder="Retype password">--}}
-{{--                        @if ($errors->has('password'))--}}
-{{--                            <span class="text-danger">{{ $errors->first('password') }}</span>--}}
-{{--                        @endif--}}
-{{--                    </div>--}}
+                    {{--                    <div class="col-12 form-group mb-3">--}}
+                    {{--                        <input type="password" class="form-control" name='password' placeholder="Retype password">--}}
+                    {{--                        @if ($errors->has('password'))--}}
+                    {{--                            <span class="text-danger">{{ $errors->first('password') }}</span>--}}
+                    {{--                        @endif--}}
+                    {{--                    </div>--}}
                     <div class="col-12 form-group mb-3">
                         <select class="form-select" aria-label="Default select example" name="role">
                             <option value="0">Employer</option>
@@ -45,8 +45,8 @@
                     </div>
                 </form>
                 <div>
-                <p id='signin-bottom'>Already have an account?
-                <a href="{{route('login')}}" id="signin-href">Sign In</a>
+                    <p id='signin-bottom'>Already have an account?
+                        <a href="{{route('login')}}" id="signin-href">Sign In</a>
                     </p>
                 </div>
             </div>
