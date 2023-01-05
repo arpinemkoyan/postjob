@@ -8,12 +8,11 @@ use App\Models\Job;
 use App\Models\Tag;
 use App\Services\JobService;
 use App\Services\JobTagService;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Carbon\Carbon;
 
-
-class JobController extends Controller
+class CandidateController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -22,7 +21,9 @@ class JobController extends Controller
      */
     public function index()
     {
-        return view('jobs.index');
+        $categories = Category::get();
+
+        return view('candidates.index', compact('categories'));
 
     }
 
@@ -70,11 +71,28 @@ class JobController extends Controller
      * @param \App\Models\Job $job
      * @return \Illuminate\Http\Response
      */
-    public function show(Job $job)
+    public function show(Request $request, int $id)
     {
-
+        $permissions = Job::where(['category_id' => $id]);
+        if ($request->title) {
+            $permissions->where('title', 'Like', '%' . $request->title . '%');
+        }
+        if ($request->location) {
+            $permissions->where('location', 'Like', '%' . $request->location . '%');
+        }
+        $jobs = $permissions->paginate(Job::PER_PAGE);
         $currentTime = Carbon::now();
-        dump($job->closing_date < $currentTime);
+        $countData = [];
+        foreach ($permissions->get() as $job) {
+            $newJobs = Job::where(['company_id' => $job->company_id])->get();
+            $count = 0;
+            foreach ($newJobs as $data) {
+                $count = $data->closing_date < $currentTime ? ++$count : $count;
+            }
+            $countData[$job->company_id] = $count;
+        }
+        return view('candidates.show', compact('jobs', 'countData'))
+            ->with('i', (request()->input('page', 1) - 1) * Job::PER_PAGE);
 
     }
 
@@ -119,4 +137,5 @@ class JobController extends Controller
     {
         return view('jobs.layout');
     }
+
 }

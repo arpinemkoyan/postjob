@@ -18,7 +18,11 @@
                         </tr>
                         <tr>
                             <td>Tagline</td>
-                            <td>{{$companyDetails->tagline}}</td>
+                            <td>
+                                @foreach($companyDetails->tagline as $tagline)
+                                    {{$tagline->tagline}}
+                                @endforeach
+                            </td>
                         </tr>
                         <tr>
                             <td>File</td>

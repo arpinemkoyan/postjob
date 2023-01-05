@@ -24,11 +24,12 @@ class JobRequest extends FormRequest
     public function rules()
     {
         return [
-            "title" => "required",
-            "location" => "required",
-            "job_tag" => "required",
-            "email_url" => "required",
-            "deadline" => "required",
+            'title' => 'required',
+            'location' => 'required',
+            'job_tag' => 'required',
+            'email_url' => 'required',
+            'deadline' => 'required',
+            'category_id' => ' required'
         ];
     }
 }

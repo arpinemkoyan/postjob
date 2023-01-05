@@ -8,7 +8,7 @@ use App\Models\Job;
 
 class JobService
 {
-    public function createJob($data)
+    public function createJob(array $data)
     {
         $job = new Job();
         $job = $job->fill([

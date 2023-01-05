@@ -26,17 +26,11 @@
                         <div class="form-group">
                             <label for="category">Category</label>
                             <div class="search-category-container">
-                                <select class="form-select" aria-label="Default select example" name="category"
+                                <select class="form-select" aria-label="Default select example" name="category_id"
                                         id="category">
-                                    <option value="all">All Categories</option>
-                                    <option value="finance">Finance</option>
-                                    <option value="it">IT & Engineering</option>
-                                    <option value="edu">Education/Training</option>
-                                    <option value="art">Art/Design</option>
-                                    <option value="marketing">Sale/Marketing</option>
-                                    <option value="health">Healthcare</option>
-                                    <option value="science">Science</option>
-                                    <option value="food">Food Service</option>
+                                    @foreach($categories as $category)
+                                        <option value="{{$category->id}}">{{$category->name}}</option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>

@@ -40,8 +40,12 @@ class UserController extends Controller
         ]);
 
         $credentials = $request->only('name', 'password');
+
+        $routeName = User::where(['name' => $request->name])->first()->role == User::EMPLOYER_ROLE ? 'layout' : 'candidates.index';
+
         if (Auth::attempt($credentials)) {
-            return redirect()->route('layout')
+
+            return redirect()->route($routeName)
                 ->withSuccess('You have Successfully loggedin');
         }
         return redirect("login")->withSuccess('Oppes! You have entered invalid credentials');
@@ -56,14 +60,8 @@ class UserController extends Controller
     {
 
         $data = $request->all();
-        if ($request->role == User::EMPLOYER_ROLE) {
-            /*Employer*/
-            $routeName = 'layout';
 
-        } else {
-            /*candidate*/
-            $routeName = 'candidate.post';
-        }
+        $routeName = $request->role == User::EMPLOYER_ROLE ? 'layout' : 'candidates.index';
 
         $check = $this->create($data);
         echo 'create';

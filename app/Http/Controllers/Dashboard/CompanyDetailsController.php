@@ -4,10 +4,9 @@ namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Requests\CompanyDetailsRequest;
 use App\Models\CompanyDetails;
+use App\Models\CompanyDetailsTaglines;
 use App\Services\CompanyDetailsService;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use function Illuminate\Session\userId;
 
 class CompanyDetailsController extends Controller
 {
@@ -18,9 +17,12 @@ class CompanyDetailsController extends Controller
      */
     public function index()
     {
-        $userId = auth()->user()->id;
-        $companyDetails = CompanyDetails::where(['user_id' => $userId])->first();
-        return view('companyDetails.index', compact('companyDetails'));
+        $companyDetails = auth()->user()->companyDetail;
+        if ($companyDetails) {
+            return view('companyDetails.index', compact('companyDetails'));
+        }
+        return view('companyDetails.create', compact('companyDetails'));
+
     }
 
     /**
@@ -42,14 +44,26 @@ class CompanyDetailsController extends Controller
     public function store(CompanyDetailsRequest $request, CompanyDetailsService $companyDetailsService)
     {
 
-        $tagline = $request->tagline1 . '\n' . $request->tagline2;
-        $detailsData = $request->only('name', 'website', 'file');
-        $detailsData['tagline'] = $tagline;
+        $detailsData = $request->only('name', 'website', 'file', 'logo');
         $detailsData['user_id'] = auth()->user()->id;
 
-        $companyDetailsService->createCompanyDetails($detailsData);
+        $newCompanyDetails = $companyDetailsService->createCompanyDetails($detailsData);
 
-        return route('companyDetails.index');
+        $tagline = new CompanyDetailsTaglines;
+        $tagline = $tagline->insert([
+                [
+                    'tagline' => $request->tagline1,
+                    'company_details_id' => $newCompanyDetails->id
+                ],
+                [
+                    'tagline' => $request->tagline2,
+                    'company_details_id' => $newCompanyDetails->id
+                ]]
+        );
+
+        $companyDetails = auth()->user()->companyDetail;
+
+        return view('companyDetails.index', compact('companyDetails'));
 
     }
 
@@ -72,9 +86,10 @@ class CompanyDetailsController extends Controller
      */
     public function edit(CompanyDetails $companyDetails, int $id)
     {
-        $companyDetails = CompanyDetails::find($id)->first();
+        $i = 1;
+        $companyDetails = CompanyDetails::find($id);
 
-        return view('companyDetails.edit', compact('companyDetails'));
+        return view('companyDetails.edit', compact('companyDetails', 'i'));
 
     }
 
@@ -88,12 +103,14 @@ class CompanyDetailsController extends Controller
     public function update(CompanyDetailsRequest $request, CompanyDetails $companyDetails, int $detailsId, CompanyDetailsService $companyDetailsService)
     {
 
-        $detailsData = $request->only('name', 'website', 'tagline', 'file');
-        $detailsData['user_id'] = auth()->user()->id;
+        $detailsData = $request->only('name', 'website', 'file');
         $companyDetailsService->updateCompanyDetails($detailsData, $detailsId);
+        $taglines = CompanyDetailsTaglines::where(["company_details_id" => $detailsId])->get();
+        $taglines[0]->update(['tagline' => $request->tagline1]);
+        $taglines[1]->update(['tagline' => $request->tagline2]);
 
         return redirect()->route('companyDetails.index')
-            ->with('success', 'Book updated successfully');
+            ->with('success', 'Company Details updated successfully');
     }
 
     /**

@@ -17,11 +17,15 @@
                             <td>Website</td>
                             <td><input type="text" value="{{$companyDetails->website}}" name="website"></td>
                         </tr>
-                        <tr>
-                            <td>Tagline</td>
-                            <td contenteditable="true"><input type="text" value="{{$companyDetails->tagline}}"
-                                                              name="tagline"></td>
-                        </tr>
+                        @foreach($companyDetails->tagline as $tagline)
+
+                            <tr>
+                                <td>Tagline</td>
+                                <td contenteditable="true"><input type="text" value="{{$tagline->tagline}}"
+                                                                  name="tagline{{$i++}}"></td>
+                            </tr>
+                        @endforeach
+
                         <tr>
                             <td>File</td>
                             <td contenteditable="true"><input type="text" value="{{$companyDetails->file}}" name="file">

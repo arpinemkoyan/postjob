@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Models\CompanyDetailsTaglines;
 use Illuminate\Foundation\Http\FormRequest;
 
 class CompanyDetailsRequest extends FormRequest
@@ -24,11 +25,17 @@ class CompanyDetailsRequest extends FormRequest
     public function rules()
     {
         return [
-            "name" => "required",
-            "website" => "required",
-            "file" => "required",
-            "tagline1" => "required",
-            "tagline2" => "required",
+            'name' => 'required',
+            'website' => 'required',
+            'file' => 'required',
+            'tagline1' => 'required',
+            'tagline2' => 'required',
+            'logo' => 'required'
         ];
+    }
+
+    public function taglines()
+    {
+        return $this->hasMany(CompanyDetailsTaglines::class);
     }
 }

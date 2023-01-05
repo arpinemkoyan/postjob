@@ -19,7 +19,7 @@
                         <tr>
                             <td>{{$category->name}}</td>
                             <td>
-                                <form {{--action="{{ route('books.destroy',$book->id) }}"--}} method="POST">
+                                <form action="{{ route('categories.destroy',$category->id) }}" method="POST">
                                     <a class="btn btn-primary" href="{{ route('categories.edit',$category->id) }}">Edit</a>
 
                                     @csrf

@@ -14,7 +14,10 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <link rel="stylesheet" href={{ asset('css/style.css')}}>
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js"
+            integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT"
+            crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700&display=swap');
 
@@ -70,6 +73,19 @@
             padding: 9px 21px;
             border-radius: 30px;
             z-index: 1;
+        }
+
+        #filetr-btn {
+            line-height: 24px;
+            background: #26ae61;
+            color: white !important;
+            border: none;
+            text-align: center;
+            overflow: hidden;
+            padding: 9px 30px;
+            border-radius: 30px;
+            text-transform: uppercase;
+
         }
 
         #login-form {
@@ -223,10 +239,98 @@
             padding: 5px !important;
         }
 
+        .card img {
+            border: 1px solid;
+            border-radius: 50%;
+            width: 100px;
+            height: 100px;
+        }
 
+        .card {
+            margin: 0;
+            padding: 10px;
+            height: 191px;
+            align-items: center;
+        }
+
+        #jobs-cards tr {
+            padding: 20px 30px;
+            margin: 17px 0 !important;
+            justify-content: space-between;
+            box-shadow: 0px 0px 14px rgba(191, 191, 191, 0.25);
+            border: 0;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            align-items: center;
+            justify-content: space-between;
+
+        }
+
+        #jobs-cards tr td:first-child {
+            display: flex;
+            align-items: center;
+        }
+
+        #jobs-cards td {
+            border: 0;
+        }
+
+        #jobs-cards img {
+            width: 40px;
+            height: 40px;
+            border: 1px solid;
+
+        }
+
+        #job-card-body {
+            display: flex;
+            flex-direction: column;
+        }
+
+        #jobs-cards h5 {
+            color: black;
+        }
+
+        #jobs-cards p {
+            margin: 0;
+        }
+
+        #apply-btn {
+            border-radius: 10px;
+            border: 2px solid #26ae61;
+            line-height: 24px;
+            color: #26ae61;
+            font-size: 14px;
+            text-transform: uppercase;
+            padding: 5px 20px;
+            border-radius: 30px;
+        }
+
+        #apply-btn:hover {
+            color: white;
+            background: #26ae61;
+        }
+
+        #jobs-cards td {
+            padding: 0 !important;
+        }
+
+        #active-job {
+            color: #26ae61;
+            background: #d5ffe7;
+            padding: 5px 21px;
+            border-radius: 30px;
+        }
+
+        td i {
+            color: #26ae61;
+
+        }
     </style>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script src="https://kit.fontawesome.com/2db4f0a0af.js" crossorigin="anonymous"></script>
 </head>
 <body>
 <script src="https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/js/adminlte.min.js"></script>
@@ -242,9 +346,30 @@
         <li class="nav-item d-none d-sm-inline-block">
             <a href="#" class="nav-link">Page</a>
         </li>
-        <li class="nav-item d-none d-sm-inline-block">
-            <a href="#" class="nav-link">Candidates</a>
+        <li class="nav-item dropdown">
+            <button class="navbar-toggler" type="button" {{--data-bs-toggle="collapse"--}}
+            data-bs-target="#navbarNavDarkDropdown" aria-controls="navbarNavDarkDropdown" aria-expanded="false"
+                    aria-label="Toggle navigation">
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
+                <ul class="navbar-nav">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button"
+                           data-bs-toggle="dropdown" aria-expanded="false">
+                            Candidates
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-light" aria-labelledby="navbarDarkDropdownMenuLink">
+                            <li><a class="dropdown-item" href="#">Browse Jobs</a></li>
+                            <li><a class="dropdown-item" href="#">Browse Categories</a></li>
+                            <li><a class="dropdown-item" href="#">Add Resume</a></li>
+                            <li><a class="dropdown-item" href="#">Manage Resumes</a></li>
+                            <li><a class="dropdown-item" href="#">Jobs Alerts</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
         </li>
+
         <li class="nav-item d-none d-sm-inline-block">
             <a href="#" class="nav-link">Employers</a>
         </li>

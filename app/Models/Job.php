@@ -9,6 +9,8 @@ class Job extends Model
 {
     use HasFactory;
 
+    const PER_PAGE = 5;
+
     public $table = "jobs";
     protected $fillable = [
         'title',
@@ -22,7 +24,7 @@ class Job extends Model
 
     public function company()
     {
-        return $this->belongsTo(Company::class);
+        return $this->belongsTo(CompanyDetails::class);
     }
 
     public function tags()

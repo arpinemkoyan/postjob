@@ -13,16 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('company_details', function (Blueprint $table) {
+        Schema::create('company_details_taglines', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_id')->unsigned();
-            $table->string('name');
-            $table->string('website');
-            $table->binary('file');
-            $table->binary('logo');
-            $table->foreign('user_id')->references('id')->on('users')
-                ->onDelete('cascade');
+            $table->integer('company_details_id')->unsigned();
+            $table->string("tagline");
             $table->timestamps();
+
+            $table->foreign('company_details_id')->references('id')->on('company_details')
+                ->onDelete('cascade');
         });
     }
 
@@ -33,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('company_details');
+        Schema::dropIfExists('company_details_taglines');
     }
 };

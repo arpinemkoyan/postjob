@@ -15,8 +15,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = new Category();
-        $categories = $categories->get();
+        $categories = Category::get();
         return view('categories.index', compact('categories'));
     }
 
@@ -38,12 +37,19 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'name' => 'required',
+            'file' => 'required'
+        ]);
+
         $category = new Category();
-        $category->fill(['name' => $request->name]);
+        $category->fill([
+            'name' => $request->name,
+            'file' => $request->file]);
         $category->save();
 
         return redirect()->route('categories.index')
-            ->with('success', 'Book created successfully.');
+            ->with('success', 'Category created successfully.');
 
     }
 
@@ -78,11 +84,19 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
-        Category::where(['id' => $category->id])
-            ->update(['name' => $request->name]);
+        $request->validate([
+            'name' => 'required'
+        ]);
+
+        $newCategory = new Category();
+        $newCategory->find($category->id)
+            ->fill([
+                'name' => $request->name,
+                'file' => $request->file
+            ])->save();
 
         return redirect()->route('categories.index')
-            ->with('success', 'Book updated successfully');
+            ->with('success', 'Category updated successfully');
     }
 
     /**
@@ -93,6 +107,9 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        //
+        $category->delete();
+
+        return redirect()->route('categories.index')
+            ->with('success', 'Category deleted successfully');
     }
 }

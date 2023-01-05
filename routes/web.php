@@ -5,6 +5,7 @@ use App\Http\Controllers\Dashboard\UserController;
 use App\Http\Controllers\Dashboard\JobController;
 use App\Http\Controllers\Dashboard\CompanyDetailsController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Dashboard\CandidateController;
 
 Route::get('/', function () {
     return view('layout');
@@ -33,5 +34,10 @@ Route::middleware(['auth'])->group(function () {
     Route::resources([
         'categories' => CategoryController::class,
     ]);
+    Route::resources([
+        'candidates' => CandidateController::class,
+    ]);
+    Route::post('candidates/filter', [CandidateController::class, 'filter'])->name('candidates.filter');
+
 
 });

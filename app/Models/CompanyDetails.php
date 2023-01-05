@@ -10,5 +10,15 @@ class CompanyDetails extends Model
     use HasFactory;
 
     public $table = "company_details";
-    protected $fillable = ['user_id', 'name', 'tagline', 'website', 'file'];
+    protected $fillable = ['user_id', 'name', 'website', 'file', 'tagline1', 'tagline2', 'logo'];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function tagline()
+    {
+        return $this->hasMany(CompanyDetailsTaglines::class);
+    }
 }
