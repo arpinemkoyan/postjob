@@ -18,6 +18,17 @@
             integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT"
             crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <!-- CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <!-- Share JS -->
+    <script src="{{ asset('js/share.js') }}"></script>
+
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700&display=swap');
 
@@ -42,6 +53,11 @@
             margin-bottom: 25px;
         }
 
+        .main-header {
+            position: fixed;
+            top: 0;
+        }
+
         .navbar-brand {
             margin: 0 262px 0 105px;
         }
@@ -63,7 +79,7 @@
         }
 
 
-        #post-job {
+        #post-job, .apply-btn {
             line-height: 24px;
             background: #26ae61;
             color: white !important;
@@ -73,6 +89,7 @@
             padding: 9px 21px;
             border-radius: 30px;
             z-index: 1;
+            text-transform: uppercase;
         }
 
         #filetr-btn {
@@ -157,6 +174,7 @@
         }
 
         .container {
+            margin-top: 100px;
             display: flex;
             flex-direction: row;
             justify-content: space-between;
@@ -263,7 +281,6 @@
             flex-direction: row;
             flex-wrap: nowrap;
             align-items: center;
-            justify-content: space-between;
 
         }
 
@@ -297,7 +314,6 @@
         }
 
         #apply-btn {
-            border-radius: 10px;
             border: 2px solid #26ae61;
             line-height: 24px;
             color: #26ae61;
@@ -326,6 +342,76 @@
         td i {
             color: #26ae61;
 
+        }
+
+        .show-job > div {
+            box-shadow: 0px 0px 14px rgba(191, 191, 191, 0.25);
+            padding: 15px 20px;
+        }
+
+        .show-job {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+        }
+
+        .show-job div:first-child {
+            width: 65%;
+        }
+
+        .show-job div:last-child {
+            width: 32%;
+        }
+
+        .show-job div div {
+            width: 100% !important;
+        }
+
+        .show-job h3 {
+            color: black;
+            text-transform: capitalize;
+        }
+
+        #social-links ul {
+            padding-left: 0;
+        }
+
+        #social-links ul li {
+            display: inline-block;
+        }
+
+        #social-links ul li a {
+            border-radius: 5px;
+            margin: 5px;
+            font-size: 25px;
+        }
+
+        #social-links .fa-facebook {
+            color: #3b5998;
+        }
+
+        #social-links .fa-twitter {
+            color: deepskyblue;
+        }
+
+        #social-links .fa-linkedin {
+            color: #0e76a8;
+        }
+
+        #social-links .fa-whatsapp {
+            color: #25D366
+        }
+
+        #social-links .fa-reddit {
+            color: #FF4500;;
+        }
+
+        #social-links .fa-telegram {
+            color: #0088cc;
+        }
+
+        .copy-text {
+            display: flex;
         }
     </style>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>

@@ -10,7 +10,6 @@ use App\Services\JobService;
 use App\Services\JobTagService;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Carbon\Carbon;
 
 
 class JobController extends Controller
@@ -45,6 +44,7 @@ class JobController extends Controller
      */
     public function store(JobRequest $request, JobService $jobService, JobTagService $jobTagService)
     {
+
         $jobData = $request->only('title', 'location', 'email_url', 'deadline', 'category_id');
         $jobData['description'] = 'hello';
         $jobData['company_id'] = auth()->user()->id;
@@ -72,9 +72,18 @@ class JobController extends Controller
      */
     public function show(Job $job)
     {
+        $address = str_replace(', ', '%20', $job->location . ',');
+        $shareButtons = \Share::page(
+            url()->current()
+        )
+            ->facebook()
+            ->twitter()
+            ->linkedin()
+            ->telegram()
+            ->whatsapp()
+            ->reddit();
 
-        $currentTime = Carbon::now();
-        dump($job->closing_date < $currentTime);
+        return view('jobs.show', compact('address', 'shareButtons', 'job'));
 
     }
 

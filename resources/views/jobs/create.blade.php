@@ -1157,49 +1157,7 @@
                             <span class="text-danger">{{ $errors->first('deadline') }}</span>
                             @endif
                         </div>
-                        {{--                        <h3 class="text-left">Company details</h3>--}}
-                        {{--                        <div class="form-group">--}}
-                        {{--                            <label for="company-name">Company name</label>--}}
-                        {{--                            <input type="text" class="form-control" name='company_name' id="company-name"--}}
-                        {{--                                   placeholder="Enter the name of company">--}}
-                        {{--                            @if ($errors->has('company_name'))--}}
-                        {{--                            <span class="text-danger">{{ $errors->first('company_ame') }}</span>--}}
-                        {{--                            @endif--}}
-                        {{--                        </div>--}}
-                        {{--                        <div class="form-group">--}}
-                        {{--                            <label for="website">Website(optional)</label>--}}
-                        {{--                            <input type="url" class="form-control" name='website' id="website"--}}
-                        {{--                                   placeholder="http://">--}}
-                        {{--                            @if ($errors->has('website'))--}}
-                        {{--                            <span class="text-danger">{{ $errors->first('website') }}</span>--}}
-                        {{--                            @endif--}}
-                        {{--                        </div>--}}
-                        {{--                        <div class="form-group">--}}
-                        {{--                            <label for="tags">Tagline(optional)</label>--}}
-                        {{--                            <input type="text" class="form-control" name='tagline' id="tags"--}}
-                        {{--                                   placeholder="Briefly describe your company">--}}
-                        {{--                            @if ($errors->has('tagline'))--}}
-                        {{--                            <span class="text-danger">{{ $errors->first('tagline') }}</span>--}}
-                        {{--                            @endif--}}
-                        {{--                        </div>--}}
-                        {{--                        <div class="form-group">--}}
-                        {{--                            <label for="tags2">Tagline(optional)</label>--}}
-                        {{--                            <input type="text" class="form-control" name='tagline2' id="tags2"--}}
-                        {{--                                   placeholder="Briefly describe your company">--}}
-                        {{--                            @if ($errors->has('tagline2'))--}}
-                        {{--                            <span class="text-danger">{{ $errors->first('tagline2') }}</span>--}}
-                        {{--                            @endif--}}
-                        {{--                        </div>--}}
-                        {{--                        <div class="form-group">--}}
-                        {{--                            <label class="input-group-text" for="inputGroupFile02">--}}
-                        {{--                                Choose file...--}}
-                        {{--                                <input type="file" class="form-control" id="inputGroupFile02" name="file">--}}
-                        {{--                            </label>--}}
-                        {{--                            @if ($errors->has('file'))--}}
-                        {{--                            <span class="text-danger">{{ $errors->first('file') }}</span>--}}
-                        {{--                            @endif--}}
-                        {{--                        </div>--}}
-                        {{--                    </div>--}}
+
                         <div class="col-12">
                             <button type="submit" class="btn btn-dark btn-block" id="job-btn">Submit Your Job</button>
                         </div>

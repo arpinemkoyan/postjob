@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "8e4931bfcc57d389c92d407f9fd2b7d5",
+    "content-hash": "807f4b225ca5332ac285caee25232de8",
     "packages": [
         {
             "name": "brick/math",
@@ -952,6 +952,65 @@
                 }
             ],
             "time": "2022-07-22T08:40:06+00:00"
+        },
+        {
+            "name": "jorenvanhocht/laravel-share",
+            "version": "4.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/jorenvh/laravel-share.git",
+                "reference": "86af334068038a840567ed62f2082fe3ac981476"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/jorenvh/laravel-share/zipball/86af334068038a840567ed62f2082fe3ac981476",
+                "reference": "86af334068038a840567ed62f2082fe3ac981476",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.4|^8.0"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^6.13|^7.0",
+                "phpunit/phpunit": "^9.3"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Jorenvh\\Share\\Providers\\ShareServiceProvider"
+                    ],
+                    "aliases": {
+                        "Share": "Jorenvh\\Share\\ShareFacade"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Jorenvh\\Share\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Joren Van Hocht",
+                    "email": "joren@codeswitch.be",
+                    "homepage": "https://codeswitch.be",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Optional package for Laravel to generate social share links.",
+            "homepage": "https://github.com/jorenvh/laravel-share",
+            "keywords": [
+                "laravel",
+                "share",
+                "social links",
+                "social share links"
+            ],
+            "time": "2022-02-11T17:20:09+00:00"
         },
         {
             "name": "laravel/framework",
@@ -5007,6 +5066,46 @@
                 }
             ],
             "time": "2022-10-07T08:02:12+00:00"
+        },
+        {
+            "name": "tarik02/yandex-maps-embed",
+            "version": "v1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Tarik02/yandex-maps-embed.git",
+                "reference": "9231dbfafa206f0ba24690aa9d1f27b148adbaa7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Tarik02/yandex-maps-embed/zipball/9231dbfafa206f0ba24690aa9d1f27b148adbaa7",
+                "reference": "9231dbfafa206f0ba24690aa9d1f27b148adbaa7",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.6.0"
+            },
+            "type": "package",
+            "autoload": {
+                "files": [
+                    "src/Support/helpers.php"
+                ],
+                "psr-4": {
+                    "Tarik02\\YandexMapsEmbed\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Tarik02",
+                    "email": "Taras.Fomin@gmail.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Laravel package to make and embed yandex maps on your site.",
+            "time": "2017-07-08T19:15:48+00:00"
         },
         {
             "name": "tijsverkoyen/css-to-inline-styles",

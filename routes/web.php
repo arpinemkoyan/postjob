@@ -6,6 +6,7 @@ use App\Http\Controllers\Dashboard\JobController;
 use App\Http\Controllers\Dashboard\CompanyDetailsController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Dashboard\CandidateController;
+use App\Http\Controllers\ShareController;
 
 Route::get('/', function () {
     return view('layout');

@@ -41,7 +41,6 @@
                     </tr>
                 @endforeach
             </table>
-            {{--                    {{ $jobs->links() }}--}}
             {!! $jobs->appends(\Request::except('page'))->render() !!}
 
         </div>
