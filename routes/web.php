@@ -7,6 +7,7 @@ use App\Http\Controllers\Dashboard\CompanyDetailsController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Dashboard\CandidateController;
 use App\Http\Controllers\ShareController;
+use App\Http\Controllers\Dashboard\JobSearchController;
 
 Route::get('/', function () {
     return view('layout');
@@ -38,7 +39,7 @@ Route::middleware(['auth'])->group(function () {
     Route::resources([
         'candidates' => CandidateController::class,
     ]);
+
     Route::post('candidates/filter', [CandidateController::class, 'filter'])->name('candidates.filter');
-
-
+    Route::get('jobSearch/show/{category}', [JobSearchController::class, 'index'])->name('jobSearch.index');
 });

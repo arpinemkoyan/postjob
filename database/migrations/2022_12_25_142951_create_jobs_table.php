@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('jobs', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title');
-            $table->integer('company_id')->unsigned();
+            $table->integer('company_details_id')->unsigned();
             $table->string('location');
             $table->integer('category_id')->unsigned();
             $table->string('description');
@@ -24,7 +24,7 @@ return new class extends Migration
             $table->dateTime('closing_date');
             $table->timestamps();
 
-            $table->foreign('company_id')->references('id')->on('users');
+            $table->foreign('company_details_id')->references('id')->on('users');
             $table->foreign('category_id')->references('id')->on('categories');
 
         });

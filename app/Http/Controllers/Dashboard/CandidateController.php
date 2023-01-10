@@ -71,29 +71,9 @@ class CandidateController extends Controller
      * @param \App\Models\Job $job
      * @return \Illuminate\Http\Response
      */
-    public function show(Request $request, int $id)
+    public function show()
     {
-        $permissions = Job::where(['category_id' => $id]);
-        if ($request->title) {
-            $permissions->where('title', 'Like', '%' . $request->title . '%');
-        }
-        if ($request->location) {
-            $permissions->where('location', 'Like', '%' . $request->location . '%');
-        }
-        $jobs = $permissions->paginate(Job::PER_PAGE);
-        $currentTime = Carbon::now();
-        $countData = [];
-        foreach ($permissions->get() as $job) {
-            $newJobs = Job::where(['company_id' => $job->company_id])->get();
-            $count = 0;
-            foreach ($newJobs as $data) {
-                $count = $data->closing_date < $currentTime ? ++$count : $count;
-            }
-            $countData[$job->company_id] = $count;
-        }
-        return view('candidates.show', compact('jobs', 'countData'))
-            ->with('i', (request()->input('page', 1) - 1) * Job::PER_PAGE);
-
+        //
     }
 
     /**

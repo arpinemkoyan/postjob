@@ -22,7 +22,7 @@ class Job extends Model
         'closing_date'
     ];
 
-    public function company()
+    public function company_details()
     {
         return $this->belongsTo(CompanyDetails::class);
     }

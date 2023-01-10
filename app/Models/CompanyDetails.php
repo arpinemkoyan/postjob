@@ -17,6 +17,12 @@ class CompanyDetails extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function jobs()
+    {
+        return $this->hasMany(Job::class);
+    }
+
+
     public function tagline()
     {
         return $this->hasMany(CompanyDetailsTaglines::class);

@@ -1,7 +1,7 @@
 @extends('layout')
 @section('content')
     <div class="jobs-cards w-100">
-        <form class="row" id="form-id"{{-- method="post" action="{{route('candidates.filter', $jobs[0])}}"--}}>
+        <form class="row" id="form-id">
             @csrf
             <div class="col">
                 <input type="text" class="form-control" id="keyword" name="title" placeholder="Keyword: Name, Tag">
@@ -22,7 +22,7 @@
                             <img src="{{$job->logo}}" class="flex-shrink-0 me-3" alt="...">
                             <div class="job-card-body align-items-start" id="job-card-body">
                                 <h5 class="">{{$job->title}}</h5>
-                                <p>{{$job->company->name}}</p>
+                                <p>{{$job->company_details->name}}</p>
                             </div>
                         </td>
                         <td><p id="active-job">{{$countData[$job->company_id]}} Open
