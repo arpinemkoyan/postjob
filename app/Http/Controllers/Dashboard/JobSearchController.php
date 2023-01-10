@@ -12,8 +12,7 @@ class JobSearchController extends Controller
 {
     public function index(Request $request, Category $category)
     {
-        $jobsData = Job::where(['category_id' => $category->id]);
-
+        $jobsData = $category->jobs();
         if ($request->title) {
             $jobsData->where('title', 'Like', '%' . $request->title . '%');
         }
