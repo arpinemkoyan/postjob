@@ -18,7 +18,7 @@ class JobService
             'description' => $data['description'],
             'email_url' => $data['email_url'],
             'closing_date' => $data['deadline'],
-            'company_id' => $data['company_id']
+            'company_details_id' => $data['company_details_id']
         ]);
         $job->save();
 

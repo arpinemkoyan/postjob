@@ -25,6 +25,8 @@
     <!-- Share JS -->
     <script src="{{ asset('js/share.js') }}"></script>
 
+    <script src="https://cdn.ckeditor.com/4.20.1/standard/ckeditor.js"></script>
+
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700&display=swap');
 
@@ -335,6 +337,14 @@
             border-radius: 30px;
         }
 
+        .card-description{
+            color: black;
+            text-align: left;
+        }
+        .card-description p{
+            text-align: left !important;
+
+        }
         td i {
             color: #26ae61;
 
@@ -409,6 +419,7 @@
         .copy-text {
             display: flex;
         }
+
     </style>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>

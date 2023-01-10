@@ -3,7 +3,9 @@
     <div class="show-job">
         <div class="card-description">
             <h3>Job Description</h3>
-            <p>{{$job->description}}</p>
+            <p id="description">
+                {!! $job->description !!}
+            </p>
             <a href="#" class="apply-btn">Apply Job</a>
         </div>
         <div>

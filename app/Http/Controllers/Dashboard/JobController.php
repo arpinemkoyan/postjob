@@ -44,10 +44,8 @@ class JobController extends Controller
      */
     public function store(JobRequest $request, JobService $jobService, JobTagService $jobTagService)
     {
-
-        $jobData = $request->only('title', 'location', 'email_url', 'deadline', 'category_id');
-        $jobData['description'] = 'hello';
-        $jobData['company_id'] = auth()->user()->id;
+        $jobData = $request->only('title', 'location', 'email_url', 'deadline', 'category_id', 'description');
+        $jobData['company_details_id'] = auth()->user()->id;
 
         $job = $jobService->createJob($jobData);
         $job_id = $job->id;

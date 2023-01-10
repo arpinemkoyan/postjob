@@ -29,7 +29,8 @@ class JobRequest extends FormRequest
             'job_tag' => 'required',
             'email_url' => 'required',
             'deadline' => 'required',
-            'category_id' => ' required'
+            'category_id' => ' required',
+            'description' => 'required'
         ];
     }
 }
