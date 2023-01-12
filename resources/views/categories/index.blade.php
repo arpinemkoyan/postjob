@@ -17,6 +17,7 @@
                     <tbody>
                     @foreach($categories as $category)
                         <tr>
+                            <td><img src="{{asset('storage/' .$category->file)}} " width="50" height="50"/></td>
                             <td>{{$category->name}}</td>
                             <td>
                                 <form action="{{ route('categories.destroy',$category->id) }}" method="POST">

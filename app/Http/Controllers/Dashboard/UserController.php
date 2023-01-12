@@ -42,12 +42,13 @@ class UserController extends Controller
         $credentials = $request->only('name', 'password');
 
         $routeName = User::where(['name' => $request->name])->first()->role == User::EMPLOYER_ROLE ? 'layout' : 'candidates.index';
-
+        $routeName = User::where(['name' => $request->name])->first()->role == User::ADMIN_ROLE ? 'categories.index' : $routeName;
         if (Auth::attempt($credentials)) {
 
             return redirect()->route($routeName)
                 ->withSuccess('You have Successfully loggedin');
         }
+
         return redirect("login")->withSuccess('Oppes! You have entered invalid credentials');
     }
 

@@ -10,7 +10,7 @@
         </div>
 
         <div>
-            <form action="{{ route('categories.store') }}" method="POST">
+            <form action="{{ route('categories.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
 
                 <div class="row">

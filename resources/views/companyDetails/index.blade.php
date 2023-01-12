@@ -28,6 +28,10 @@
                             <td>File</td>
                             <td>{{$companyDetails->file}}</td>
                         </tr>
+                        <tr>
+                            <td>Logo</td>
+                            <td>{{$companyDetails->logo}}</td>
+                        </tr>
                     </table>
 
                     <div class="col-12">

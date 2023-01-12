@@ -7,6 +7,7 @@ use App\Models\CompanyDetails;
 use App\Models\CompanyDetailsTaglines;
 use App\Services\CompanyDetailsService;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
 
 class CompanyDetailsController extends Controller
 {
@@ -61,6 +62,13 @@ class CompanyDetailsController extends Controller
                 ]]
         );
 
+        //Move Uploaded File to public folder
+
+        $destinationPath = 'storage/uploads/company';
+        $myimage = $request->logo->getClientOriginalName();
+        $request->logo->move(public_path($destinationPath), $myimage);
+
+
         $companyDetails = auth()->user()->companyDetail;
 
         return view('companyDetails.index', compact('companyDetails'));
@@ -86,6 +94,7 @@ class CompanyDetailsController extends Controller
      */
     public function edit(CompanyDetails $companyDetails, int $id)
     {
+
         $i = 1;
         $companyDetails = CompanyDetails::find($id);
 
@@ -103,11 +112,20 @@ class CompanyDetailsController extends Controller
     public function update(CompanyDetailsRequest $request, CompanyDetails $companyDetails, int $detailsId, CompanyDetailsService $companyDetailsService)
     {
 
-        $detailsData = $request->only('name', 'website', 'file');
+        $detailsData = $request->only('name', 'website');
+
+        $filePath = $request->file('file')->store('uploads/file');
+        $logoPath = $request->file('logo')->store('uploads/logo');
+
+        $detailsData['file'] =$filePath;
+        $detailsData['logo'] =$logoPath;
+
         $companyDetailsService->updateCompanyDetails($detailsData, $detailsId);
         $taglines = CompanyDetailsTaglines::where(["company_details_id" => $detailsId])->get();
+        if( count($taglines) ==2){
+                    $taglines[2]->update(['tagline' => $request->tagline2]);
+        }
         $taglines[0]->update(['tagline' => $request->tagline1]);
-        $taglines[1]->update(['tagline' => $request->tagline2]);
 
         return redirect()->route('companyDetails.index')
             ->with('success', 'Company Details updated successfully');
@@ -122,5 +140,10 @@ class CompanyDetailsController extends Controller
     public function destroy(CompanyDetails $companyDetails)
     {
         //
+    }
+
+    public function download($path)
+    {
+        return Storage::download($path);
     }
 }

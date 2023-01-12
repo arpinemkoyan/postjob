@@ -18,8 +18,8 @@ return new class extends Migration
             $table->integer('user_id')->unsigned();
             $table->string('name');
             $table->string('website');
-            $table->binary('file');
-            $table->binary('logo');
+            $table->string('file');
+            $table->string('logo');
             $table->foreign('user_id')->references('id')->on('users')
                 ->onDelete('cascade');
             $table->timestamps();

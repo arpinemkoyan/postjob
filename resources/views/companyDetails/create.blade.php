@@ -4,7 +4,7 @@
         <div class="row g-15" style="width: 72%">
             <div class="page-login-form box" id="login-form">
                 <h3 class="text-left">Company details</h3>
-                <form class="post-form" method="post" action="{{ route('companyDetails.store') }}">
+                <form class="post-form" method="post" action="{{ route('companyDetails.store') }}" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group">
                         <label for="company-name">Company name</label>
@@ -45,6 +45,15 @@
                         </label>
                         @if ($errors->has('file'))
                             <span class="text-danger">{{ $errors->first('file') }}</span>
+                        @endif
+                    </div>
+                    <div class="form-group">
+                        <label class="input-group-text" for="inputGroupFile02">
+                            Logo
+                            <input type="logo" class="form-control" id="inputGroupFile02" name="logo">
+                        </label>
+                        @if ($errors->has('logo'))
+                            <span class="text-danger">{{ $errors->first('logo') }}</span>
                         @endif
                     </div>
             </div>

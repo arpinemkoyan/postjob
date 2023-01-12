@@ -29,7 +29,6 @@ class CompanyDetailsRequest extends FormRequest
             'website' => 'required',
             'file' => 'required',
             'tagline1' => 'required',
-            'tagline2' => 'required',
             'logo' => 'required'
         ];
     }

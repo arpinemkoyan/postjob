@@ -4,7 +4,7 @@
     <div class="main-card p-4">
         <p class="text-left fs-2 fw-bold">Edit Category</p>
         <div>
-            <form action="{{ route('categories.update',$category->id) }}" method="POST">
+            <form action="{{ route('categories.update',$category->id) }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
 

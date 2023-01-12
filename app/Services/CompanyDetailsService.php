@@ -15,7 +15,8 @@ class CompanyDetailsService
             'user_id' => $data['user_id'],
             'name' => $data['name'],
             'website' => $data['website'],
-            'file' => $data['file']
+            'file' => $data['file'],
+            'logo' => $data['logo']
         ]);
         $companyDetails->save();
 
@@ -29,7 +30,8 @@ class CompanyDetailsService
             ->update([
                 'name' => $data['name'],
                 'website' => $data['website'],
-                'file' => $data['file']
+                'file' => $data['file'],
+                'logo' => $data['logo']
             ]);
 
         return $companyDetails;

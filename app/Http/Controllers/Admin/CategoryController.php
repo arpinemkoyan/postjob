@@ -42,10 +42,13 @@ class CategoryController extends Controller
             'file' => 'required'
         ]);
 
+        $filePath = $request->file->store('uploads/category');
+
         $category = new Category();
         $category->fill([
             'name' => $request->name,
-            'file' => $request->file]);
+            'file' => $filePath
+        ]);
         $category->save();
 
         return redirect()->route('categories.index')
@@ -85,14 +88,18 @@ class CategoryController extends Controller
     public function update(Request $request, Category $category)
     {
         $request->validate([
-            'name' => 'required'
+            'name' => 'required',
         ]);
+
+//        dump($request->file);die();
+        $filePath = $request->file('file')->store('uploads/category');
+
 
         $newCategory = new Category();
         $newCategory->find($category->id)
             ->fill([
                 'name' => $request->name,
-                'file' => $request->file
+                'file' =>$filePath
             ])->save();
 
         return redirect()->route('categories.index')

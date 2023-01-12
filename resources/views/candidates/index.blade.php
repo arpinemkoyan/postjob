@@ -5,7 +5,7 @@
             @foreach($categories as $category)
                 <div class="card">
                     <a href="{{route('jobSearch.index', $category->id)}}" class="stretched-link">
-                        <img src="{{$category->file}}" {{--class="card-img-top"--}} {{--alt="..."--}}>
+                        <img src="{{asset('storage/'. $category->file)}}" />
                         <div class="card-body">
                             <h5 class="card-title">{{$category->name}}</h5>
                             <p class="card-text">{{$category->jobs->count()}}</p>

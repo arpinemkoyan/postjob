@@ -19,7 +19,7 @@
                 @foreach($jobs as $job)
                     <tr>
                         <td>
-                            <img src="{{$job->logo}}" class="flex-shrink-0 me-3" alt="...">
+                            <img src="{{asset('storage/'. $job->company_details->logo)}}" class="flex-shrink-0 me-3" alt="...">
                             <div class="job-card-body align-items-start" id="job-card-body">
                                 <h5 class="">{{$job->title}}</h5>
                                 <p>{{$job->company_details->name}}</p>
